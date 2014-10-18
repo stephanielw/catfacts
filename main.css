@@ -1,0 +1,48 @@
+body {
+	background: url('4.jpg') no-repeat center center fixed;
+	
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.boxy{
+	background-color: rgba(0,0,0,0.6);
+	width: 75%;
+	margin: 100px auto;
+	padding: 20px;
+}
+h1 {
+	color: white;
+	font-family: 'Fredericka the Great', cursive;
+	margin: 0;
+	float: left;
+}
+h2 {
+	color:white;
+	font-family: 'Helvetica Neue', Helvetica;
+	font-weight: 200;
+	float:left;
+}
+.icon{
+	float:right;
+	height: 30px;
+
+}
+
+#plus{
+	margin-top: ;
+
+}
+#next{
+	margin-top: 30px;
+}
+#new-section{
+	display:none;
+	width:300px;
+	margin: auto;
+}
+.clr{
+	clear:both;
+}

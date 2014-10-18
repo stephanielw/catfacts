@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<title>My Awesome Cat Fact Website</title>
+		<link rel='stylesheet' type='text/css' href='main.css' />
+		<link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+			<script type="text/javascript" language="Javascript" 
+	        src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
+			</script>
+
+	</head>
+	<body>
+	  
+	  <div class='boxy'>
+
+	     <h1>Cat Facts</h1>
+	     <img src="plus.png" class="icon"  id="plus"/>
+	     <div class="clr"></div>
+		 <h2 id="cat-fact">cats can dance</h2>
+		 <div id="new-section">
+		 	<h2>Enter Your Cat Fact:</h2>
+		 	<div class="crl"></div>
+		 	<form>
+		 		<input type="text" name="fact" id="fact"/>
+		 		<input type="Submit" />
+		 	</form>
+		 </div>
+		 <img src="next.png" class="icon" id="next"/>
+		  <div class="clr"></div>
+	  
+	     </div>
+	  <script language="javascript" type="text/javascript">
+	  		$(function() {
+	  			
+	  			var index=0;
+
+	  			$('form').submit(function(event){
+	  					var fact=$('#fact').val();
+	  					$.post("http://www.catfact.info/api/v1/facts.json ",{fact:{details: fact}} ,function(data){
+		  				$('#new-section').hide('slow');
+		  				$('#cat-fact').show('slow');
+		  				$('#plus').show('slow');
+		  				$('#next').show('slow');
+		  				$('#cat-fact').html(fact);
+		  					
+	  				});
+	  					
+	  				
+	  				
+	  				event.prevenDefault();
+ 					
+	  			});
+	  			
+	  			$('#plus').click(function(){
+	  				$('#cat-fact').hide('slow');
+	  				$('#new-section').show('slow');
+	  				$('#plus').hide('slow');
+	  				$('#next').hide('slow');
+	  			});
+	  			
+	  			$('#next').click(function(){
+	  				index=index+1;
+	  				$.get("http://www.catfact.info/api/v1/facts.json",{page: index, per_page:1},function(data){
+	  					if(data.facts[0]){
+	  					var message=data.facts[0].details;
+	  				$('#cat-fact').html(message);
+	  			}else{
+	  				index=0;
+	  				$('#cat-fact').html('Cats discovered the moon and they beat humans to it.');
+	  			}
+
+	  				});
+	  				
+	  			});
+
+
+	  		});
+	  </script>
+
+	</body>
+
+</html>
